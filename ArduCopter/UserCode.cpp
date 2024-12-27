@@ -1,12 +1,19 @@
 #include "Copter.h"
 
-
+int serial_port_GPS1 = 3;
 
 #ifdef USERHOOK_INIT
 void Copter::userhook_init()
 {
     // put your initialisation code here
     // this will be called once at start-up
+    hal.serial(serial_port_GPS1)->begin(115200);         // GPS 1 - port Pixhawk CubeOrangePlus
+
+    // SERIAL1_ - TELEM1
+    // SERIAL2_ - TELEM2
+    // SERIAL3_ - GPS1
+    // SERIAL4_ - GPS2
+
 }
 #endif
 
@@ -14,6 +21,10 @@ void Copter::userhook_init()
 void Copter::userhook_FastLoop()
 {
     // put your 100Hz code here
+    hal.console->printf("Hello World from Mahesh \n");
+
+    hal.console->printf("serial data -> %c\n",hal.serial(serial_port_GPS1)->read());
+
 }
 #endif
 
@@ -42,7 +53,6 @@ void Copter::userhook_SlowLoop()
 void Copter::userhook_SuperSlowLoop()
 {
     // put your 1Hz code here
-
 
 
 }
