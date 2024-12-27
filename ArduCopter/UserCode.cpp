@@ -1,5 +1,7 @@
 #include "Copter.h"
 
+
+
 #ifdef USERHOOK_INIT
 void Copter::userhook_init()
 {
@@ -40,6 +42,9 @@ void Copter::userhook_SlowLoop()
 void Copter::userhook_SuperSlowLoop()
 {
     // put your 1Hz code here
+
+
+
 }
 #endif
 
