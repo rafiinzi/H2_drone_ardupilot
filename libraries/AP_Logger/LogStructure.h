@@ -638,6 +638,14 @@ struct PACKED log_VER {
     uint8_t filter_version;
 };
 
+struct PACKED log_custom_func {
+    LOG_PACKET_HEADER;
+    uint64_t time_us;
+    float  data1;
+    float  data2;
+    float  data3;
+};
+
 
 // FMT messages define all message formats other than FMT
 // UNIT messages define units which can be referenced by FMTU messages
@@ -1254,7 +1262,9 @@ LOG_STRUCTURE_FROM_AIS \
     { LOG_VER_MSG, sizeof(log_VER), \
       "VER",   "QBHBBBBIZHBB", "TimeUS,BT,BST,Maj,Min,Pat,FWT,GH,FWS,APJ,BU,FV", "s-----------", "F-----------", false }, \
     { LOG_MOTBATT_MSG, sizeof(log_MotBatt), \
-      "MOTB", "QfffffB",  "TimeUS,LiftMax,BatVolt,ThLimit,ThrAvMx,ThrOut,FailFlags", "s------", "F------" , true }
+      "MOTB", "QfffffB",  "TimeUS,LiftMax,BatVolt,ThLimit,ThrAvMx,ThrOut,FailFlags", "s------", "F------" , true }, \
+    { LOG_CUSTOM_DATA_MSG, sizeof(log_custom_func), \
+      "RAFI", "Qfff",  "TimeUS,data1,data2,data3", "sOP-", "F---" , true } 
 
 // message types 0 to 31 reserved for vehicle-specific use
 
@@ -1342,7 +1352,7 @@ enum LogMessages : uint8_t {
     LOG_RCOUT3_MSG,
     LOG_IDS_FROM_FENCE,
     LOG_IDS_FROM_HAL,
-
+    LOG_CUSTOM_DATA_MSG,
     _LOG_LAST_MSG_
 };
 

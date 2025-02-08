@@ -1031,6 +1031,7 @@ private:
     void userhook_auxSwitch1(const RC_Channel::AuxSwitchPos ch_flag);
     void userhook_auxSwitch2(const RC_Channel::AuxSwitchPos ch_flag);
     void userhook_auxSwitch3(const RC_Channel::AuxSwitchPos ch_flag);
+    void Custom_data_logger_example();
 
 #if MODE_ACRO_ENABLED
 #if FRAME_CONFIG == HELI_FRAME
